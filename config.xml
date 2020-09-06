@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="ilpaw.com" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>WAPLI ~同志社大学生のためのアプリ~</name>
+    <description>
+        同志社大学専用のアプリです
+    </description>
+    <author email="wapli2019@gmail.com" href="https://wapiwapi1729.wixsite.com/website">
+        Wapli
+        </author>
+    <content src="www/index.html" />
+    <plugin name="cordova-plugin-whitelist" spec="1" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+
+<icon density="ldpi" src="icon/android36.png"/>　…36 x 36
+<icon density="mdpi" src="icon/android48.png"/>　…48 x 48
+<icon density="hdpi" src="icon/android72.png"/>　…72 x 72
+<icon density="xhdpi" src="icon/android96.png"/>　…96 x 96
+<icon density="xxhdpi" src="icon/android144.png"/>　…144 x 144
+    
+    </platform>
+<platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+
+</widget>

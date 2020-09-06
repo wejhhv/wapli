@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2,user-scalable=no">
+		<title>WapliApp</title>
+	
+		  <!-- CSS読み込み-->
+		  <link rel="stylesheet" type="text/css" href="lib/onsenui/css/onsenui.css">
+		  <link rel="stylesheet" type="text/css" href="lib/onsenui/css/onsen-css-components.css">
+		  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+		  <link rel="stylesheet" href="css/map.css">
+		  <link rel="stylesheet" type="text/css" href="css/timetable.css">
+	
+   
+		 <!--JS読み込み-->
+		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		 <script type="text/javascript" src="lib/jquery.js"></script>
+		 <script type="text/javascript" src="lib/onsenui/js/onsenui.js"></script>
+		 <script type="text/javascript" src="js/splitter.js"></script>
+			 <script type="text/javascript" src="js/hidePeriod.js"></script>
+		 <script type="text/javascript" src="js/timetable.js"></script>
+		 <script type="text/javascript" src="js/zoom.js"></script>
+		 <script type="text/javascript" src="js/openInf.js"></script>
+		 <script type="text/javascript" src="js/closeInf.js"></script>
+		 <script type="text/javascript" src="js/locateServices.js"></script>
+</head>
+<body>
+		<ons-page>
+				<ons-tabbar>
+						<ons-tab page="home.html" label="home" icon="home"> </ons-tab>
+						<ons-tab page="map.html" label="マップ" icon="map"> </ons-tab>
+						<ons-tab page="timetable.html" label="タイムテーブル" icon="clock"> </ons-tab>
+						<ons-tab page="ai.html" label="チャット" icon="user"> </ons-tab>
+				</ons-tabbar>
+		</ons-page>
+		<template id="home.html">
+			<ons-page id="ons-home">
+				<!--曽川-->
+					<div class="divHomeButton">
+					<a id="doshishaHP" class="homeButton reset button-arrow-inner-thin"  href="https://www.doshisha.ac.jp/students/index.html">同志社大学HP</a>
+				</div>
+				<div class="divHomeButton">
+					<a id="DOORs" class="homeButton reset button-arrow-inner-thin" href="https://doors.doshisha.ac.jp/opac/opac_search/">ＤＯＯＲｓ</a>
+				</div>
+				<div class="divHomeButton">
+					<a id="WebSignOn" class="homeButton reset button-arrow-inner-thin" href="https://sso.doshisha.ac.jp/cgi-bin/index.cgi?GASF=IG.GRID,UserPassword,IG.OTP&GAREASONCODE=-1&GARESOURCEID=resource0005&GAURI=https://sso.doshisha.ac.jp:443/cgi%2Dbin/portal.cgi&Reason=-1&APPID=resource0005&URI=https://sso.doshisha.ac.jp:443/cgi%2Dbin/portal.cgi
+					">Webシングルサインオン</a>
+				</div>
+				<div class="divHomeButton">
+					<a id="doshishaCalendar" class="homeButton reset button-arrow-inner-thin" href="https://www.doshisha.ac.jp/students/schedule/calendar_undergrad.html">同志社カレンダー</a>
+				</div>
+				<!--曽川ここまで-->
+			  </ons-page>
+		</template>
+
+		
+<!-- ここからマップ -->
+<template id="map.html">
+    <ons-page id="ons-map">
+      <!--ここから左端のメニュー-->
+      <ons-splitter>    
+          <ons-splitter-side id="map_menu" side="left" width="220px" collapse swipeable swipe-target-width="50px">
+            <ons-page>
+              <div class="list_title">
+                  <span id="list_title">メニュー</span>
+              </div>
+              <div class="cp_actab">
+              <input id="tab-one" type="button" name="tabs" onclick="locateServices(0)">
+              <label for="tab-one">WiFi</label>
+              <div class="cp_actab-content">
+                
+              </div>
+              </div>
+              <div class="cp_actab">
+                <input id="tab-two" type="button" name="tabs" onclick="locateServices(1)">
+                <label for="tab-two">Dokodemoプリント</label>
+                <div class="cp_actab-content">
+                    
+                </div>
+              </div>
+              <div class="cp_actab">
+                <input id="tab-three" type="button" name="tabs" onclick="locateServices(2)">
+                <label for="tab-three">書面発行機</label>
+                <div class="cp_actab-content">
+                    
+                </div>
+              </div>
+              <div class="cp_actab">
+                <input id="tab-four" type="button" name="tabs" onclick="locateServices(3)">
+                <label for="tab-four">コピー機</label>
+                <div class="cp_actab-content">
+
+                </div>
+              </div>
+              <div class="cp_actab">
+                <input id="tab-five type="button" name="tabs" onclick="locateServices(4)">
+                <label for="tab-five">自動販売機</label>
+                <div class="cp_actab-content">
+                    
+                </div>
+              </div>
+              <div class="cp_actab">
+                <input id="tab-six" type="button" name="tabs" onclick="locateServices(5)">
+                <label for="tab-six">食事</label>
+                <div class="cp_actab-content">
+                    
+                </div>
+              </div>
+              <div class="cp_actab">
+                <input id="tab-seven" type="button" name="tabs" onclick="locateServices(6)">
+                <label for="tab-seven">PC</label>
+                <div class="cp_actab-content">
+
+                </div>
+			  </div>
+			  <!-- <div class="cp_actab">
+                <input id="tab-eight" type="button" name="tabs" onclick="locateServices(7)">
+                <label for="tab-eight">バス停</label>
+                <div class="cp_actab-content">
+
+                </div>
+			  </div>
+			  <div class="cp_actab">
+                <input id="tab-nine" type="button" name="tabs" onclick="locateServices(8)">
+                <label for="tab-nine">ATM</label>
+                <div class="cp_actab-content">
+
+                </div>
+			  </div> -->
+              <div class="cp_actab">
+                <input id="tab-ten" type="button" name="tabs" onclick="locateServices(7)">
+                <label for="tab-ten">AllDelete</label>
+                <div class="cp_actab-content">
+
+                </div>
+              </div>
+            </ons-page>
+          </ons-splitter-side>
+          <ons-splitter-content id="ms_content" page="page-top.html"></ons-splitter-content>
+      </ons-splitter>
+      <!--ここまで左端のメニュー-->
+    </ons-page>
+  </template>
+
+  <template id="page-top.html">
+    <ons-page id="page-top">
+      <ons-toolbar>
+        <div class="left">
+          <ons-toolbar-button onclick="fn1.open()">
+          <ons-icon icon="md-menu"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">
+        
+        </div>
+        <div class="right">
+          <ons-button id="zoomin">+</ons-button>
+          <ons-button id="zoomout">-</ons-button>
+        </div>
+      </ons-toolbar>
+    
+      <div id="map">
+        <img id="mapImage" src="imgs/kyotanabeMap.png">
+
+        <!-- 各種マップピン -->
+        <img class="pin" id="libraryPin" src="imgs/_i_icon_00140_icon_001400_256.png">
+        <img class="pin" id="rohmPin" src="imgs/_i_icon_00140_icon_001400_256.png">
+        <img class="pin" id="shigyoPin" src="imgs/_i_icon_00140_icon_001400_256.png">
+        <img class="pin" id="rikagakuPin" src="imgs/_i_icon_00140_icon_001400_256.png">
+        <img class="pin" id="jmPin" src="imgs/_i_icon_00140_icon_001400_256.png">
+        <img class="pin" id="mkPin" src="imgs/_i_icon_00140_icon_001400_256.png">
+        <img class="pin" id="nichiryoPin" src="imgs/_i_icon_00140_icon_001400_256.png">
+        <img class="pin" id="hokenPin" src="imgs/_i_icon_00140_icon_001400_256.png">
+        <img class="pin" id="shionPin" src="imgs/_i_icon_00140_icon_001400_256.png">
+        <img class="pin" id="davisPin" src="imgs/_i_icon_00140_icon_001400_256.png">
+        <img class="pin" id="seishinPin" src="imgs/_i_icon_00140_icon_001400_256.png">
+        <img class="pin" id="vend1Pin" src="imgs/_i_icon_00140_icon_001400_256.png">
+        <img class="pin" id="vend2Pin" src="imgs/_i_icon_00140_icon_001400_256.png">
+        <img class="pin" id="kdPin" src="imgs/_i_icon_00140_icon_001400_256.png">
+
+
+        <!-- 図書館 -->
+        <ons-button class="obj" id="obj0" onclick="openInf(0)"></ons-button>
+        <!-- ローム -->
+        <ons-button class="obj" id="obj1" onclick="openInf(1)"></ons-button>
+        <!-- 嗣業館 -->
+        <ons-button class="obj" id="obj2" onclick="openInf(2)"></ons-button>
+         <!-- 理化学館 -->
+        <ons-button class="obj" id="obj3" onclick="openInf(3)"></ons-button>
+        <!-- JM -->
+        <ons-button class="obj" id="obj4" onclick="openInf(4)"></ons-button>
+        <!-- 夢告館 -->
+        <ons-button class="obj" id="obj5" onclick="openInf(5)"></ons-button>
+        <!-- 日糧館 -->
+        <ons-button class="obj" id="obj6" onclick="openInf(6)"></ons-button>
+        <!-- 保健センター -->
+        <ons-button class="obj" id="obj7" onclick="openInf(7)"></ons-button>
+        <!-- 紫苑館 -->
+        <ons-button class="obj" id="obj8" onclick="openInf(8)"></ons-button>
+        <!-- デイヴィス記念館 -->
+        <ons-button class="obj" id="obj9" onclick="openInf(9)"></ons-button>
+
+
+        <!-- 各建物情報 -->
+        <!-- 図書館情報 -->
+        <div class="obj_inf" id="obj_inf0">
+			<h1>ラーネッド記念図書館</h1>
+			<p>
+			  <!--開館時間をホームページから盗みたい-->
+			  <i class="fas fa-home">　空白</i><br>
+			  <i class="fas fa-globe">　<a href=" https://library.doshisha.ac.jp/"> https://library.doshisha.ac.jp/</a></i><br>
+			  <!--Wi-Fi情報-->
+			  <i class="fas fa-rss">　DO-NET使えます</i> <br>
+			  <br>      
+			  <a href="https://doors.doshisha.ac.jp/opac/opac_search/?lang=0" class="btn">DOORS </a> 
+  
+			  <br>      
+			  <a href="https://ryoshinkan-lc.doshisha.ac.jp/" class="btn">▼ラーニングコモンズ空席情報はこちら</a> 
+			</p>
+		</div>
+		<!-- ローム情報 -->
+		<div class="obj_inf" id="obj_inf1">
+		<h1>ローム記念館(RM)</h1>
+			<div>
+			<p>
+			<!--開館時間-->
+			<i class="fas fa-home">　8:00~20:00</i><br>
+			<!--ジョアミ情報-->
+			<i class="fas fa-utensils" >　【ジョアミ】<br>　　平日　8:30~18:00<br>　　土曜　8:30～15:00<br>　　閉店　日・祝日</i><br>
+			<!--ロームの電話番号-->
+			<i class="fas fa-phone">　0774-65-7800</i><br>
+			<!--ロームメールアドレス-->
+			<i class="fas fa-paper-plane">　<a href="mailto:jt-rohm@mail.doshisha.ac.jp">jt-rohm@mail.doshisha.ac.jp</a></i><br>
+			<!--ホームぺージ-->
+			<i class="fas fa-globe">　<a href="https://rohm.doshisha.ac.jp/">https://rohm.doshisha.ac.jp/</a></i><br>
+			<!--Wi-Fi状況-->
+			<i class="fas fa-rss">　DO-NET使えます</i> <br>
+			<!-- 折り畳み展開ポインタ -->
+			<div onclick="obj=document.getElementById('open').style; obj.display=(obj.display=='none')?'block':'none';">
+				<a style="cursor:pointer;">▼ローム記念館の詳細はこちら</a>
+			</div>
+			<!--// 折り畳み展開ポインタ -->
+			<!-- 折り畳まれ部分 -->
+			<div id="open" style="display:none;clear:both;">
+						<!--ここから折りたたまれる内容部分。-->
+					<p>　ローム株式会社から寄付をもとに建設した「同志社ローム記念館」と、最先端の情報教育環境を備えた正課授業で利用する「情報メディア館」からなる複合施設です。 <br>
+					</p><p>　「同志社ローム記念館」は、学生・生徒と産業界、地域との連携による様々なプロジェクトを展開するための施設です。<br>
+					</p><p>　各プロジェクトの活動拠点となるプロジェクトルームを数多備えるだけでなく、グランドフロア吹き抜けは、200インチ大スクリーン、12面大型マルチビジョンを配置したオープンテラス「劇場空間」となっており、コンテンツ制作のためのマルチメディアラウンジやスタジオも配備しています。<br>
+					</p><p>　プロジェクトのミーティング、行事、展示スペース、成果発表等の目的に応じて自由に活用できる空間となっています。 
+					</p>
+			</div>
+		</div>
+			<!--// 折り畳まれ部分 -->
+			<br>    
+			<!--マルチメディアの空席情報のページに飛ぶ-->  
+			<a href="http://sakura.doshisha.ac.jp/Ext/EXT_NEW02.aspx?AreaId=02&LocationCd=60400021&MapId=RG" class="btn">マルチメディアラウンジ空席情報はこちら</a>
+		</div>
+		<!-- 嗣業館情報 -->
+		<div class="obj_inf" id="obj_inf2">
+		<h1><ruby>嗣業館<rt>しぎょうかん</rt></ruby></h1>
+		<div onclick="obj=document.getElementById('open5').style; obj.display=(obj.display=='none')?'block':'none';">
+			<u style="cursor:pointer;">▼嗣業館の情報はこちら</u>
+		</div>
+		<div id="open5" style="display:none;clear:both;">
+			<p>留学生課やキャリアセンター、京田辺校地総務課等の事務室機能が集積した施設です。<br>館名は、 旧約聖書詩篇第73章26節<br>「されど神はわがこころの磐（いわ）わがとこしえの嗣業 （ゆずり）なり」<br>に由来します。</p>
+		</div>
+		<br>
+		<i class="fas fa-globe"fa-4x>　<a href="https://ois.doshisha.ac.jp/index.html">▼留学生課のホームページはこちら</a></i><br>
+		<i class="fas fa-globe"fa-4x>　<a href="https://career-center.doshisha.ac.jp/">▼キャリアセンターのホームページはこちら</a></i><br>
+		</div>
+		<!-- 理化学館情報 -->
+		<div class="obj_inf" id="obj_inf3">
+		<h1>理化学館(RG)</h1>
+		<div onclick="obj=document.getElementById('open17').style; obj.display=(obj.display=='none')?'block':'none';">
+			<u style="cursor:pointer;">▼館の情報はこちら</u>
+		</div>
+		<div id="open17" style="display:none;clear:both;">
+			<p>今出川キャンパスにあるハリス理化学館の理念を継いだ理工学部・理工学研究科の拠点施設です。<br>正面玄関上には、J.N.ハリスの言葉"SEEK THROUGH YOUR VOCATION TO SERVE GOD AND HUMANITY"<br>（天職による神と人類への献身）が刻まれています。</p>
+		</div>
+		<a href="https://se.doshisha.ac.jp" class="btn">▼理工学部HPはこちら</a><br>
+		<a href="https://biomedical.doshisha.ac.jp" class="btn">▼生命医科学部HPはこちら</a>
+		</div>
+		<!-- JM情報 -->
+		<div class="obj_inf" id="obj_inf4">
+		<h1>情報メディア館（JM）</h1>
+			<div onclick="obj=document.getElementById('open61').style; obj.display=(obj.display=='none')?'block':'none';">
+			<u style="cursor:pointer;">▼館の情報はこちら</u><br>
+			<a href="http://openpc.doshisha.ac.jp/clv/s/" class="btn">▼PC空席情報はこちら</a> 
+			</div>
+			<div id="open61" style="display:none;clear:both;">
+				<p>      
+			</p>
+			</div>
+		</div>
+		<!-- 夢告館情報 -->
+		<div class="obj_inf" id="obj_inf5">
+		<h1><ruby> 夢告館<rt>むこくかん</rt>（MK）　</ruby></h1>
+		<div onclick="obj=document.getElementById('open52').style; obj.display=(obj.display=='none')?'block':'none';">
+			<u style="cursor:pointer;">▼館の情報はこちら</u><br>
+			<a href="https://www.cis.doshisha.ac.jp" class="btn">▼文化情報学部のHPはこちら</a> 
+		</div>
+		<div id="open52" style="display:none;clear:both;">
+			<p>   
+					文化情報学部・文化情報学研究科の拠点施設および教室棟で、<br>
+					新約聖書マタイによる福音書第1章20節「視（み）よ、主の使、夢に現れて言ふ『ダビデの子ヨセフよ、妻マリアを納（い）るる事を恐るな。<br>
+					その胎に宿る者は聖霊によるなり。』」に由来します。
+			</p>
+		</div>
+		</div>
+		<!-- 日糧館情報 -->
+		<div class="obj_inf" id="obj_inf6">
+		<h1>日糧館</h1>
+		<h2>【京田辺Cafeteria】</h2>
+		<p>
+			<!--開館情報-->
+			<i class="fas fa-utensils">　平日　8:30~14:00<br>　　土曜　8:30～14:00<br>　</i><br>
+			日糧館の二階にあるカフェテリア方式の大型食堂です。座席数は５２５席。
+			<!--ホームぺージ-->
+			<i class="fas fa-globe">　<a href="https://www.doshisha.ac.jp/information/facility/restaurant.html">▼ホームページはこちら</a></i><br>
+		</p>
+		<h2>【カフェテリア　FUJIYA】</h2>
+		<p>
+			<!--開館情報-->
+			<i class="fas fa-utensils">　平日　10:00~15:00<br>　　土曜　10:00～14:00<br>　</i><br>
+			日糧館の一階にあるカフェテリア方式の大型食堂です。座席数は５４８席。
+			<!--ホームぺージ-->
+			<i class="fas fa-globe">　<a href="https://www.doshisha.ac.jp/information/facility/restaurant.html">▼ホームページはこちら</a></i><br>
+		</p>
+		<h2>【カリーハウス】</h2>
+		<p>
+		<!--開館情報-->
+		<i class="fas fa-utensils" >　平日　11:00~14:00<br>　　土曜　10:00~15:00<br>　</i><br>
+		日糧館の一階にあるおいしんボ横丁と呼ばれる食堂専門街です。座席数は４１席。
+		<!--ホームぺージ-->
+		<i class="fas fa-globe">　<a href="https://www.doshisha.ac.jp/information/facility/restaurant.html">▼ホームページはこちら</a></i><br>
+		</p>
+		<h2>【和麺・丼　いも文】</h2>
+		<p>
+		<!--開館情報-->
+		<i class="fas fa-utensils" >　平日　11:00~19:00<br>　　土曜　11:00~14:00<br>　</i><br>
+		日糧館の一階にあるおいしんボ横丁と呼ばれる食堂専門街です。座席数は32席。
+		<!--ホームぺージ-->
+		<i class="fas fa-globe">　<a href="https://www.doshisha.ac.jp/information/facility/restaurant.html">▼ホームページはこちら</a></i><br>
+		</p>
+		<h2>【とんかつ　ふじカツ】</h2>
+		<p>
+		<!--開館情報-->
+		<i class="fas fa-utensils">　平日　11:00~15:00<br>　　土曜　11:00~45:00<br>　</i><br>
+		日糧館の一階にあるおいしんボ横丁と呼ばれる食堂専門街です。座席数は34席。
+		<!--ホームぺージ-->
+		<i class="fas fa-globe">　<a href="https://www.doshisha.ac.jp/information/facility/restaurant.html">▼ホームページはこちら</a></i><br>
+		</p>
+		<h2>【Hamac de Paradis Latte】</h2>
+		<p>
+		<!--開館情報-->
+		<i class="fas fa-utensils">　平日　10:30~20:00（l.o.）<br>　　土曜　11:00~14:00（l.o.）<br>　</i><br>
+		日糧館の一階にあるおいしんボ横丁と呼ばれる食堂専門街です。座席数は120席。
+		<!--ロームの電話番号-->
+		<i class="fas fa-phone">　0774-65-8368</i><br>
+		<!--ホームぺージ-->
+		<i class="fas fa-globe">　<a href="https://www.balnibarbi.com/shops/hamac_latte/">▼ホームページはこちら</a></i><br>
+		</p>
+		</div>
+		<!-- 保健センター情報 -->
+		<div class="obj_inf" id="obj_inf7">
+		<h1>保健センター</h1>
+		<p>
+		<!--開館時間-->
+		<i class="fas fa-home">　月～金<br>　　９：００～１２：００、<br>　　１３：００～１７：００</i><br>
+		・一般診療　月～金　13：00～16：00<br>
+		（受け付けは15:30まで）<br>
+		・精神保健相談　火・金　予約制 <br>
+		<i class="fas fa-phone"fa-4x>　0774-65-7390</i><br>
+		<!--ホームぺージ-->
+		<i class="fas fa-globe"fa-4x>　<a href="https://health.doshisha.ac.jp/">▼ホームページはこちらです。</a></i><br>
+		</p>
+		</div>
+		<!-- 紫苑館情報 -->
+		<div class="obj_inf" id="obj_inf8">
+		<h1><ruby>紫苑館<rt>しおんかん</rt></ruby></h1>
+		<p>
+		<!--開館情報-->
+		<i class="fas fa-utensils " >　平日　11:00~20:00<br>　　休日　11:00~19:00<br>　</i><br>
+		カフェテリア方式の大食堂やラウンジといった福利厚生施設です。座席数は７８１席。
+		</p>
+		</div>
+		<!-- デイヴィス記念館情報 -->
+		<div class="obj_inf" id="obj_inf9">
+		<h1>デイヴィス記念館</h1>
+		<div onclick="obj=document.getElementById('open60').style; obj.display=(obj.display=='none')?'block':'none';">
+			<u style="cursor:pointer;">▼館の情報はこちら</u>
+		</div>
+		<div id="open60" style="display:none;clear:both;">
+			<p>   
+			・開講期間中は月曜～金曜の15時～21時30分、土曜の13時～21時30分 <br>
+			・試験期間中、夏期・冬期・春期休暇中、日・祝日は9時～21時<br>
+				・夏期（8月中旬）と冬期（年末年始）は使用不可の期間あり<br>
+			トレーニングルーム<br>
+			【使用日時】<br>
+				○開講・試験期間 <br>
+				＜当日使用の場合＞ 　　平日9：00～11：30<br>
+				　ただし、土曜日に使用する場合は前日の金曜日  9：00～11：30に受付 　　（金曜日が休日の場合はその前日）<br>
+			＜事前予約する場合＞ 　　使用日の前週の金曜日  9：00～11：30（金曜日が休日の場合はその前日） <br>
+			※教室ダイヤが確定していない時期は貸し出しできない場合がある。<br>
+			月・火・水・金：12：15～20：00 <br>
+			土　曜　日：10：30～18：00 <br>
+			※木曜日、日曜日、祝日は閉室。<br>
+				※授業時間割によって変更の可能性がある。<br>
+				詳細はスポーツ支援課事務室前掲示板にて周知する。<br>
+			【申込受付】 <br>
+			・必ず使用者講習（約1時間）を受講すること。（講習申込は、スポーツ支援課）。<br>
+				・各講習日とも定員30名、先着順にて受け付ける。<br> 
+			・講習日程は、スポーツ支援課事務室前掲示板にてお知らせ。<br>
+			</p>
+		</div>
+		</div>
+
+    </ons-page>
+  </template>
+<!--ここまでマップ  -->
+
+		
+<!-- ここからタイムテーブル -------------------------------------------------------------->
+		<template id="timetable.html">
+			<ons-page id="ons-timetable.html">
+
+<!-- 出欠　----------------------------------------------------------------------------- -->
+<template id="attendanceConfirmation">
+	<ons-page id="ons-attendanceConfirmation">
+			<ons-toolbar id="lectureName0" width="100%" style="background-color:rgb(255, 255, 254);">		
+				<div class="center" >出欠確認</div>
+				<div class="left">
+								<ons-back-button>戻る</ons-back-button>
+							</div>
+</ons-toolbar>
+	
+	<!-- 出欠ボタン----------------------------------- -->
+<div class="checkAttendance" id="check-attendance">
+	<a href="#" class="btn-attendance">
+		<i class="fas fa-running"></i>
+	  </a>
+	  <div>　　出席</div>
+	</div>
+
+	<div class="checkAttendance" id="check-late">
+		<a href="#" class="btn-late">
+			<i class="fas fa-exclamation-circle"></i>
+		  </a>
+		  <div>　  遅刻</div>
+		</div>
+		<div class="checkAttendance" id="check-absence">
+			<a href="#" class="btn-absence">
+			<i class="fas fa-bed"></i>
+			  </a>
+			  <div>　　欠席</div>
+			</div>
+<!-- 出欠ボタン ここまで------------------------------------>
+
+			<!-- 出欠の詳細 ---------------------------------->
+			<div id='attendanceDetails' class='attendanceDetails'>
+				<button  class="detailsClose" id="attendanceDetailsClose" modifier="quiet">閉じる</button>
+				<div>出席</div>
+				<div id="attendanceTime" class="attendanceTime"></div>
+			   </div>
+
+			   <div id='lateDetails' class='lateDetails'>
+				<button class="detailsClose" id="lateDetailsClose" modifier="quiet">閉じる</button>
+				<div>遅刻</div>
+				<div id="lateTime" class="lateTime"></div>
+			   </div>
+
+			   <div id='absenceDetails' class='absenceDetails'>
+				<button class="detailsClose" id="absenceDetailsClose" modifier="quiet">閉じる</button>
+				<div>欠席</div>
+				<div id="absenceTime" class="absenceTime"></div>
+			   </div>
+				   <!--------- 出欠の詳細　ここまで ------------->
+				   
+		<!-- 出欠回数--------------------- -->
+			<ons-list-header >出席回数</ons-list-header>
+			<ons-list-item  class="attendanceCount" id="attendanceCount" tappable>
+			</ons-list-item>
+			<ons-list-header >遅刻回数</ons-list-header>
+			<ons-list-item  class="lateCount" id="lateCount" tappable>
+			</ons-list-item>
+			<ons-list-header >欠席回数</ons-list-header>
+			<ons-list-item  class="absenceCount" id="absenceCount" tappable>
+			</ons-list-item>
+<!-- 出欠回数 ここまで--------------------- -->
+			
+			<br>
+			<br>
+			<ons-list-item  class="checkAttendanceClear" id="checkAttendanceClear" tappable>
+				<div>クリア</div>
+			</ons-list-item>
+
+			<script>
+
+					var pageNum=localStorage.getItem('num');
+					var attendanceCountNum = localStorage.getItem('attendance'+pageNum.toString());
+					var lateCountNum = localStorage.getItem('late'+pageNum.toString());
+					var absenceCountNum = localStorage.getItem('absence'+pageNum.toString());
+					console.log( attendanceCountNum);
+					console.log(document.getElementById("attendanceCount"));
+					document.getElementById("attendanceCount").innerText=attendanceCountNum+"回";
+					document.getElementById("lateCount").innerText=lateCountNum+"回";
+					document.getElementById("absenceCount").innerText=absenceCountNum+"回";
+			</script>
+
+		</ons-page>
+</template>
+<!--メモ ----------------------------------------------------------------- -->
+	<template id="memo">
+		<ons-page id="ons-memo">
+			<ons-toolbar id="lectureName" width="100%" style="background-color:rgb(255, 255, 254);">		
+				<div class="center" >メモ</div>
+				<div class="left">
+								<ons-back-button>戻る</ons-back-button>
+							</div>
+				<div class="right" >
+					<ons-toolbar-button id="memoSaveButton" style="font-size: large;">保存</ons-toolbar-button>
+				</div>
+</ons-toolbar>
+		<textarea id="memoarea" name="memoarea" ></textarea>
+</ons-page> 
+
+	</template>
+
+<!--評価基準 ----------------------------------------------------------------- -->
+
+	<template id="EvaluationCriteria">
+			<ons-page id="ons-EvaluationCriteria">
+					<ons-toolbar id="lectureName" width="100%" style="background-color:rgb(255, 255, 254);">		
+						<div class="center" >評価基準</div>
+						<div class="left">
+										<ons-back-button>戻る</ons-back-button>
+									</div>
+		</ons-toolbar>
+		
+				</ons-page>
+	</template>
+<!--科目選択 ----------------------------------------------------------------- -->
+<template id="courseRegistration">
+	<ons-page id="ons-courseRegistration">
+			<ons-toolbar id="lectureName" width="100%" style="background-color:rgb(255, 255, 254);">		
+				<div class="center" >科目選択
+				</div>
+				<div class="left">
+								<ons-back-button>戻る</ons-back-button>
+							</div>
+</ons-toolbar>
+	
+科目コードを入力:<input id="id_number" type="number"><br>
+講義名を入力してください:<input id="kyouka_text" type="number"><br>
+教授名を入力してください:<input id="teacher_text" type="number"><br>
+
+<button id="ajax">検索</button>
+<br>
+<div id="result" tappable>
+</div>
+
+
+<script>
+
+</script>
+
+</template>
+
+<!-- シラバス-------------------------------------------------------------------- -->
+			　	<template id="syllabus">
+						<ons-page id="ons-syllabus">
+							<ons-toolbar id="lectureName" width="100%" style="background-color:rgb(255, 255, 254);">		
+								<div class="center" >シラバス</div>
+								<div class="left">
+												<ons-back-button>戻る</ons-back-button>
+											</div>
+				</ons-toolbar>
+		
+						</ons-page>
+		
+				</template>
+				<template id="changeColor">
+					<ons-page id="ons-changeColor">
+						<ons-toolbar id="lectureName0" width="100%" style="background-color:rgb(255, 255, 254);">		
+							<div class="center" ></div>
+							<div class="left">
+											<ons-back-button>戻る</ons-back-button>
+										</div>
+				</ons-toolbar>
+				<div>講義０の色変更ページです</div>
+				
+				<table class="colorTable" id="colorTable0" style=" font-size:xx-large ;width :100%;height:80%; border:solid; text-align: center;" border="1">
+					<tr>
+						<td class="color0 colorCell"></td>	
+						<td class="color1 colorCell"></td>
+						<td class="color2 colorCell"></td>
+						<td class="color3 colorCell"></td>
+					</tr>
+					<tr>
+						<td class="color4 colorCell"></td>	
+						<td class="color5 colorCell"></td>
+						<td class="color6 colorCell"></td>
+						<td class="color7 colorCell"></td>
+					</tr>
+					<tr>
+						<td class="color8 colorCell"></td>	
+						<td class="color9 colorCell"></td>
+						<td class="color10 colorCell"></td>
+						<td class="color11 colorCell"></td>
+					</tr>
+					<tr>
+						<td class="color12 colorCell"></td>	
+						<td class="color13 colorCell"></td>
+						<td class="color14 colorCell"></td>
+						<td class="color15 colorCell"></td>
+					</tr>
+				</table>
+		<ons-list>
+		</ons-page>
+	</template>
+				
+				
+				
+				
+<!-- ここから各ページ ------------------------------------------------------------------->
+						<template id="lecturePage">
+								<ons-page id="ons-lecturePage">
+												<ons-toolbar id="lectureName" width="100%" style="background-color:rgb(255, 255, 254);">
+														
+																<div  id="kougimei" class=" center kougimei">heihei</div>
+																<div class="left">
+																				<ons-back-button>戻る</ons-back-button>
+																			</div>
+												</ons-toolbar>
+												<header>
+													<h1></h1>
+													<div class="lectureNameHeader" id="lectureNameHeader" style="background-color:transparent">
+												 
+													</div>
+													<form id="RoomForm">
+													 <textarea  class="RoomContent" id="RoomContent" maxlength="17"  style="background-color:transparent" placeholder="教室名を入力"  value="1" ></textarea>
+												 </form> 
+												   <ons-button id="saveRoom" class="saveRoom" >完了</ons-button>
+												 
+												</header>
+									   
+						<ons-list id=lecturePageList>
+							   
+								<ons-list-header >管理</ons-list-header>
+								<ons-list-item  class="lecturePageListItem" tappable>
+										<div>出欠</div>
+								</ons-list-item>
+								<ons-list-item  class="lecturePageListItem" tappable>
+										<div>メモ</div>
+								</ons-list-item>
+								<ons-list-header>授業詳細</ons-list-header>
+								<ons-list-item   class="lecturePageListItem syllabus"  value="0"  tappable>
+										<div >シラバス</div>
+								</ons-list-item>
+								<ons-list-item  class="lecturePageListItem" tappable>
+										<div>e-class</div>
+								</ons-list-item>
+								<ons-list-header>授業情報</ons-list-header>
+								<ons-list-item class="lecturePageListItem" tappable>
+										<div>評価基準</div>
+								</ons-list-item>
+								<ons-list-header>授業連絡</ons-list-header>
+								<ons-list-item  class="lecturePageListItem" tappable>
+										<div>休講情報</div>
+								</ons-list-item>
+								<ons-list-header>授業設定</ons-list-header>
+								<ons-list-item  class="lecturePageListItem" tappable>
+									<div>講義選択</div>
+							</ons-list-item>
+							<!--曽川-->
+							<ons-list-item  class="lecturePageListItem" tappable>
+								<div>色</div>
+						</ons-list-item>	
+						<!--曽川-->
+						</ons-list>
+						<br>
+						<br>
+						<br>
+						<script>
+							var kougimei= document.querySelector('#kougimei');
+							console.log(kougimei);
+							//console.log(localStorage.getItem('lecture-name'+i.toString()));
+							var num=localStorage.getItem('num');
+							kougimei.innerText=localStorage.getItem('lecture-name'+num.toString());
+
+							
+							var date=localStorage.getItem('RoomContentmemo'+num.toString());
+							console.log(date);
+							var RoomContent=document.getElementById('RoomContent');
+							console.log(RoomContent);
+							RoomContent.innerHTML=date;
+							var roombtn=document.getElementById('saveRoom');
+							
+							roombtn.addEventListener("click", () => {
+							
+									document.getElementById("a-"+num.toString()+"p").innerText=localStorage.getItem('RoomContentmemo'+num.toString());
+									var RoomCon = document.getElementById("RoomContent").value;
+									localStorage.setItem('RoomContentmemo'+num.toString() ,RoomCon);
+									var RoomContent=document.getElementById("RoomContent");
+								
+							});
+						</script>
+		</ons-page>
+		
+				</template>
+<!-- ここまで各ページ -->
+
+
+<ons-splitter>
+	<ons-splitter-side itter-side id="timetable_menu" side="left" width="220px" collapse swipeable swipe-target-width="50px">
+		<ons-page id="lecture">
+		  
+		  
+		  <div class="cp_actab">
+			  <input id="year" type="checkbox" name="tabs">
+			  <label for="year">年度</label>
+			  <div class="cp_actab-content">
+				  <button>2020</button>
+				  <button>2021</button>
+			  </div>
+			  </div>
+
+			  <div class="cp_actab">
+				  <input id=semestar type="checkbox" name="tabs">
+				  <label for="semestar">学期</label>
+				  <div class="cp_actab-content">
+					  <button>春学期</button>
+					  <button>秋学期</button>
+				  </div>
+				  </div>
+
+  <div class="cp_actab">
+	  <input id="tab-two" type="checkbox" name="tabs">
+	  <label for="tab-two">表示・非表示</label>
+	  <div class="cp_actab-content">
+		  <button id="button_hidePiriod6" onclick="TableDisp(1)">6限非表示</button>
+		  <button id="button_dispPiriod6" onclick="TableDisp(0)" hidden>6限表示</button>
+		  <button id="button_hidePiriod7" onclick="TableDisp(3)">7限非表示</button>
+		  <button id="button_dispPiriod7" onclick="TableDisp(2)" hidden>7限表示</button>
+		  <button id="button_hidePiriodsat" onclick="TableDisp(4)">土曜非表示</button>
+		  <button id="button_dispPiriodsat" onclick="TableDisp(5)" hidden>土曜表示</button>
+	  </div>
+	  </div>
+
+
+					  
+				  </ons-page>
+  </ons-splitter-side>
+		  <ons-splitter-content id="ts_content" page="ons-appsche.html"></ons-splitter-content>
+	  </ons-splitter>      
+	   </ons-page>
+	  </template>
+	   
+		  <template id="settings.html">
+		  <ons-page >
+			<ons-toolbar>
+			  <div class="left">
+				<ons-toolbar-button onclick="fn2.open()">
+				  <ons-icon icon="md-menu"></ons-icon>
+				</ons-toolbar-button>
+			  </div>
+			  <div class="center">
+				Settings
+			  </div>
+			</ons-toolbar>
+		  </ons-page>
+		</template>
+
+	  
+	  <template  id="ons-appsche.html">
+		  <ons-page id="ons-appsche">
+	  <ons-toolbar>
+		  <div class="left">
+		  <ons-toolbar-button onclick="fn2.open()">
+			<ons-icon icon="md-menu"></ons-icon>
+		  </ons-toolbar-button>
+		  </div>
+		<div class="center">
+			講義
+		</div>
+	  </ons-toolbar>
+
+
+	  <ons-navigator id="1_lecture">
+		<ons-page id="ons-lecture">
+				<!-- 講義の表 -->
+
+		
+				
+				
+				<table border="1" id="table" class='table' style="font-size: small;">
+					<tr id="weeks" class="weeks">
+							<th id="space"></th>
+							<th id="Monday" class="day">月</th>
+							<th id="Tuesday" class="day">火</th>
+							<th id="Wednesday" class="day">水</th>
+							<th id="Thursday" class="day">木</th>
+							<th id="Friday" class="day">金</th>
+							<th id="Saturday" class="day">土</th>
+							</tr>
+							<!-- 一限目 -->
+							<tr  id="period_1">
+									<td class="piriod_num"><div>9:00</div><br><b>1</b><br><br><div>10:30</div></td>
+									<td id="a-0"  class="a">
+											<div id="a-0c" class="sell "><p class="tagP"></p></div>
+											<hr>
+											<div id="a-0p" class=sell><p class="tagP  classroom"></p></div>
+									</td>
+									<td id="a-1" class="a" >
+											<div id="a-1c" class="sell"><p class="tagP"></p></div>
+											<hr>
+											<div id="a-1p" class="sell"><p class="tagP classroom"></p></div>
+									</td>
+									<td id="a-2" class="a a-1-3">
+											<div id="a-2c" class="sell"><p class="tagP">アナリティカルリーディング</p></div>
+											<hr>
+											<div id="a-2p" class="sell"><p class="tagP classroom">TC1-201</p></div>
+									</td>
+									<td id="a-3" class="a a-1-4">
+											<div id="a-3c" class="sell"><p class="tagP">情報数学</p></div>
+											<hr>
+											<div id="a-3p" class="sell"><p class="tagP classroom">MK201</p></div>
+									</td>
+									<td id="a-4" class="a">
+											<div id="a-4c" class="sell"><p class="tagP"></p></div>
+											<hr>
+											<div id="a-4p" class="sell"><p class="tagP classroom"></p></div>
+									</td>
+									<td id="a-5" class="a a-1-6">
+											<div id="a-5c" class="sell"><p class="tagP">中国語2-1</p></div>
+											<hr>
+											<div id="a-5p" class="sell"><p class="tagP classroom">TC1-119</p></div>
+									</td>
+							</tr>
+							<tr id="period_2">
+											<td id="a-2-0" class="piriod_num"><div>10:45</div><br><b>2</b><br><br><div>12:15</div></td>
+											<td id="a-6" class="a a-2-1">
+													<div id="a-6c" class="sell"><p class="tagP">コミニカティブイングリッシュ</p></div>
+													<hr>
+													<div id="a-6p" class="sell"><p class="tagP classroom">TC1-310</p></div>
+											</td>
+											<td id="a-7" class="a">
+													<div id="a-7c" class="sell"><p class="tagP"></p></div>
+													<hr>
+													<div id="a-7p" class="sell"><p class="tagP classroom"></p></div>
+											</td>
+											<td id="a-8" class="a a-2-3">
+													<div id="a-8c" class="sell"><p class="tagP">運動学の基礎</p></div>
+													<hr>
+													<div id="a-8p" class="sell"><p class="tagP classroom">KD203</p></div>
+											</td>
+											<td id="a-9" class="a a-2-4">
+													<div id="a-9c" class="sell"><p class="tagP">コンピュータグラフィックス</p></div>
+													<hr>
+													<div id="a-9p" class="sell"><p class="tagP classroom">KD106</p></div>
+											</td>
+											<td id="a-10" class="a a-2-5">
+													<div id="a-10c" class="sell"><p class="tagP">コンピュータ基礎実習</p></div>
+													<hr>
+													<div id="a-10p" class="sell"><p class="tagP classroom">JM201</p></div>
+											</td>
+											<td id="a-11" class="a">
+													<div id="a-11c" class="sell"><p class="tagP"></p></div>
+													<hr>
+													<div id="a-11p" class="sell"><p class="tagP classroom"></p></div>
+											</td>
+									</tr>
+									<tr id="period_3">
+											<td id="a-3-0" class="piriod_num"><div>13:10</div><br><b>3</b><br><br><div>14:40</div></td>
+											<td id="a-12" class="a a-3-1">
+													<div id="a-12c" class="sell"><p class="tagP">情報工学概論</p></div>
+													<hr>
+													<div id="a-12p" class="sell"><p class="tagP classroom">TC3-214</p></div>
+											</td>
+											<td id="a-13" class="a a-3-2">
+													<div id="a-13c" class="sell"><p class="tagP">経済学2-1</p></div>
+													<hr>
+													<div id="a-13p" class="sell"><p class="tagP classroom">TC2-201</p></div>
+											</td>
+											<td id="a-14" class="a a-3-3">
+													<div id="a-14c" class="sell"><p class="tagP">微分方程式</p></div>
+													<hr>
+													<div id="a-14p" class="sell"><p class="tagP classroom">KD204</p></div>
+											</td>
+											<td id="a-15" class="a a-3-4">
+													<div id="a-15c" class="sell"><p class="tagP">解析学II</p></div>
+													<hr>
+													<div id="a-15p" class="sell"><p class="tagP classroom">KD104</p></div>
+											</td>
+											<td id="a-16" class="a a-3-5">
+													<div id="a-16c" class="sell"><p class="tagP">バドミントン</p></div>
+													<hr>
+													<div id="a-16p" class="sell"><p class="tagP classroom">DV</p></div>
+											</td>
+											<td id="a-17" class="a">
+													<div id="a-17c" class="sell"><p class="tagP"></p></div>
+													<hr>
+													<div id="a-17p" class="sell"><p class="tagP classroom"></p></div>
+											</td>
+									</tr>
+									<tr id="period_4">
+											<td id="a-4-0" class="piriod_num"><div>14:55</div><br><b>4</b><br><br><div>16:25</div></td>
+											<td id="a-18" class="a">
+													<div id="a-18c" class="sell"><p class="tagP"></p></div>
+													<hr>
+													<div id="a-18p" class="sell"><p class="tagP classroom"></p></div>
+											</td>
+											<td id="a-19" class="a a-4-2">
+													<div id="a-19c" class="sell"><p class="tagP">中国語2-1</p></div>
+													<hr>
+													<div id="a-19p" class="sell"><p class="tagP classroom">TC1-119</p></div>
+											</td>
+											<td id="a-20" class="a a-4-3">
+													<div id="a-20c" class="sell"><p class="tagP">線形代数学</p></div>
+													<hr>
+													<div id="a-20p" class="sell"><p class="tagP classroom">TC3-117</p></div>
+											</td>
+											<td id="a-21" class="a a-4-4">
+													<div id="a-21c" class="sell"><p class="tagP">AES2-7</p></div>
+													<hr>
+													<div id="a-21p" class="sell"><p class="tagP classroom">TC1-309</p></div>
+											</td>
+											<td id="a-22" class="a a-4-5">
+													<div id="a-22c" class="sell"><p class="tagP">CプログラミングII</p></div>
+													<hr>
+													<div id="a-22p" class="sell"><p class="tagP classroom">JM201</p></div>
+											</td>
+											<td id="a-23" class="a">
+													<div id="a-23c" class="sell"><p class="tagP"></p></div>
+													<hr>
+													<div id="a-23p" class="sell"><p class="tagP classroom"></p></div>
+											</td>
+									</tr>
+									<tr id="period_5">
+											<td id="a-5-0" class="piriod_num"><div>16:40</div><br><b>5</b><br><br><div>18:10</div></td>
+											<td id="a-24" class="a">
+													<div id="a-24c" class="sell"><p class="tagP"></p></div>
+													<hr>
+													<div id="a-24p" class="sell classroom"><p class="tagP classroom"></p></div>
+											</td>
+											<td id="a-25" class="a">
+													<div id="a-25c" class="sell"><p class="tagP"></p></div>
+													<hr>
+													<div id="a-25p" class="sell classroom"><p class="tagP classroom"></p></div>
+											</td>
+											<td id="a-26" class="a">
+													<div id="a-26c" class="sell"><p class="tagP"></p></div>
+													<hr>
+													<div id="a-26p" class="sell classroom"><p class="tagP"></p></div>
+											</td>
+											<td id="a-27" class="a">
+													<div id="a-27c" class="sell"><p class="tagP"></p></div>
+													<hr>
+													<div id="a-27p" class="sell classroom"><p class="tagP"></p></div>
+											</td>
+											<td id="a-28" class="a a-5-5">
+													<div id="a-28c" class="sell"><p class="tagP">CプログラミングII</p></div>
+													<hr>
+													<div id="a-28p" class="sell classroom"><p class="tagP">JM201</p></div>
+											</td>
+											<td id="a-29" class="a">
+													<div id="a-29c" class="sell"><p class="tagP"></p></div>
+													<hr>
+													<div id="a-29p" class="sell classroom"><p class="tagP"></p></div>
+											</td>
+									</tr>
+									<tr id="period_6" >
+											<td id="a-6-0" class="piriod_num"><div>18:25</div><br><b>6</b><br><br><div>19:55</div></td>
+											<td id="a-30" class="a">
+													<div id="a-30c" class="sell"><p class="tagP"></p></div>
+													<hr>
+													<div id="a-30p" class="sell classroom"><p class="tagP"></p></div>
+											</td>
+											<td id="a-31" class="a">
+													<div id="a-31c" class="sell"><p class="tagP"></p></div>
+													<hr>
+													<div id="a-31p" class="sell classroom"><p class="tagP"></p></div>
+											</td>
+											<td id="a-32" class="a">
+													<div id="a-32c" class="sell"><p class="tagP"></p></div>
+													<hr>
+													<div id="a-32p" class="sell classroom"><p class="tagP"></p></div>
+											</td>
+											<td id="a-33" class="a">
+													<div id="a-33c" class="sell"><p class="tagP"></p></div>
+													<hr>
+													<div id="a-33p" class="sell classroom"><p class="tagP"></p></div>
+											</td>
+											<td id="a-34" class="a">
+													<div id="a-34c" class="sell"><p class="tagP"></p></div>
+													<hr>
+													<div id="a-34p" class="sell classroom"><p class="tagP"></p></div>
+											</td>
+											<td id="a-35" class="a">
+													<div id="a-35c" class="sell"><p class="tagP"></p></div>
+													<hr>
+													<div id="a-35p" class="sell classroom"><p class="tagP"></p></div>
+											</td>
+									</tr>
+									<tr id="period_7" >
+											<td id="a-7-0" class="piriod_num"><div>20:10</div><br><b>7</b><br><br><div>21:40</div></td>
+											<td id="a-36" class="a">
+													<div id="a-36c" class="sell"><p class="tagP"></p></div>
+													<hr>
+													<div id="a-36p" class="sell classroom"><p class="tagP"></p></div>
+											</td>
+											<td id="a-37" class="a">
+													<div id="a-37c" class="sell"><p class="tagP"></p></div>
+													<hr>
+													<div id="a-37p" class="sell classroom"><p class="tagP"></p></div>
+											</td>
+											<td id="a-38" class="a">
+													<div id="a-38c" class="sell"><p class="tagP"></p></div>
+													<hr>
+													<div id="a-38p" class="sell classroom"><p class="tagP"></p></div>
+											</td>
+											<td id="a-39" class="a">
+													<div id="a-39c" class="sell"><p class="tagP"></p></div>
+													<hr>
+													<div id="a-39p" class="sell classroom"><p class="tagP"></p></div>
+											</td>
+											<td id="a-40" class="a">
+													<div id="a-40c" class="sell"><p class="tagP"></p></div>
+													<hr>
+													<div id="a-40p" class="sell classroom"><p class="tagP"></p></div>
+											</td>
+											<td id="a-41" class="a"value="42">
+													<div id="a-41c" class="sell"><p class="tagP"></p></div>
+													<hr>
+													<div id="a-41p" class="sell classroom"><p class="tagP"></p></div>
+											</td>
+									</tr>
+			</table>
+		</ons-page>
+</ons-navigator>
+		</ons-page>
+		</template>
+<!-- ここまでタイムテーブル -->
+		<template id=ai.html>
+			<ons-page id="ons-ai">
+				ai
+			  </ons-page>
+		</template>
+</body>
+</html>

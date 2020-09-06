@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>Ajax、PHP、MySQLの連携</title>
+<link rel="stylesheet" href="">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>　
+</head>
+<body>
+
+講義名を入力:<input id="kyouka_text" type="text"><br>
+
+<div id="result">
+ <p>講義名を入力してボタンを押してください。</p>
+</div>
+<button id="ajax">ボタン</button>
+
+<script>
+var i=0
+
+$(function(){
+
+ $('#ajax').on('click',function(){
+
+  $.ajax({
+   url:'./ajax2.php', //送信先
+   type:'POST', //送信方法
+   datatype: 'json', //受け取りデータの種類
+   data:{
+    'kyouka' : $('#kyouka_text').val()
+   }
+   })
+   // Ajax通信が成功した時
+   .done( function(data) {
+   $('#result').html("<p>科目コード"+data[0].id+"は「"+data[0].gakubu+"」の授業です。<br>講義名は「"+data[0].kyouka+"」です。<br>また教授名は「"+data[0].kyoushi+"」で「"+data[0].place+"」校地で単位は「"+data[0].tani+"」です</p>");
+   console.log('通信成功');
+   console.log(data);
+   })
+   // Ajax通信が失敗した時
+   .fail( function(data) {
+   $('#result').html(data);
+   console.log('通信失敗');
+   console.log(data);
+   })
+ }); //#ajax click end
+
+}); //END
+</script>
+
+</body>
+</html>

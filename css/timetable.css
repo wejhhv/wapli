@@ -1,0 +1,572 @@
+/* #ons-lecture{
+    width:100%;
+    height:100%;
+}
+
+#table{
+	width:100%;
+    height:100%;
+    border-radius:5px;
+    border-color:black;
+    position: absolute;
+} */
+.sell{
+    width:100%;
+    height:100%;
+    
+}
+#ons-lecturePage0{
+    height:100%;
+}
+#nav-lecturePage0{
+    height:100%;
+}
+
+#nav-lecturePageList0{
+    height:100%;
+}
+
+
+
+
+
+#ons-lecture{
+    width:100%;
+    height:100%;
+}
+
+#table{
+    table-layout: fixed;
+    width:100%;
+    max-width: 100%;
+    border-radius:3%;
+    border:black;
+    position: absolute;;
+    text-align: center;
+    border:thin;
+}
+/* .sell{
+    width:100%;
+    height:100%;
+    
+} */
+.a{
+    height:10%;
+    text-overflow: ellipsis;
+    font-size:x-small;
+    -webkit-text-overflow:ellipsis;
+    white-space:normal;
+    overflow:hidden;
+    background-color: rgb(137, 157, 177);
+}
+.tagP{
+    max-width: 100%;
+    text-overflow: ellipsis;
+    -webkit-text-overflow:ellipsis;
+    white-space: nowrap;
+    overflow:hidden;
+}
+
+.day{
+    height:10%;
+    /* width:; */
+    background-color: rgb(255, 255, 255);
+}
+.piriod_num{
+    background-color: rgb(255, 255, 255);
+}
+.piriod_num{
+    width:5%
+}
+
+/* .memoContent{
+    width:50vh;
+    height:5vh;
+    position:relative;
+} */
+
+.memoContent{
+    width:50vh;
+    height:60vh;
+    background-color: rgb(200, 255, 255);
+    position:center;
+    top:0;
+    bottom: 0;
+    right:0;
+    left:0;
+    margin: 0 auto;
+
+}
+.memoContent:hover{
+    background-color: khaki;
+}
+
+.memoTable{
+    width:50vh;
+    height:60vh;
+    background-color: rgb(200, 255, 255);
+    position:center;
+    margin: 0 auto;
+}
+
+.saveMemo{
+    position:relative;
+
+}
+
+.memoContent6{
+    background-color:azure;
+    width:60vw;
+    height:10vh;
+}
+
+
+
+.classroom{
+    font-size: xx-small;
+}
+
+
+
+
+.cp_actab {
+	position: relative;
+	overflow: auto;
+	width: 100%;
+	margin: 0 auto;
+	color: #ffffff;
+}
+.cp_actab input {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+}
+.cp_actab label {
+	font-weight: bold;
+	line-height: 3;
+	position: relative;
+	display: block;
+	padding: 0 0 0 4em;
+	cursor: pointer;
+	margin: 0 0 2px 0;
+	background: #50b0e7;
+}
+.cp_actab .cp_actab-content {
+	overflow: auto;
+	max-height: 0;
+	-webkit-transition: max-height 0.35s;
+	transition: max-height 0.35s;
+	color: #333333;
+	background: #c6e5f1;
+}
+.cp_actab .cp_actab-content p {
+	margin: 1em;
+}
+/* :checked */
+.cp_actab input:checked ~ .cp_actab-content {
+	max-height: 20em;
+}
+/* Icon */
+.cp_actab label::after {
+	line-height: 3;
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: block;
+	width: 3em;
+	height: 3em;
+	-webkit-transition: all 0.35s;
+	transition: all 0.35s;
+	text-align: center;
+}
+.cp_actab input[type=checkbox] + label::after {
+	content: '▶';
+}
+.cp_actab input[type=checkbox]:checked + label::after {
+	transform: rotate(90deg);
+}
+.cp_actab-content>button{
+  height:60px;
+  width:100%;
+ text-align:left;
+ font-size:100%;
+ border:solid 0.5px;
+ border-color: #67c5ff;
+}
+.cp_actab-content>button:hover{
+  background-color:mediumturquoise;
+}
+
+
+
+.memoContent{
+    width:50vh;
+    height:5vh;
+    position:relative;
+}
+.memoContent:hover{
+    background-color: khaki;
+}
+
+.memoTable{
+    width:80vh;
+    height:10vh;
+    background-color: rgb(200, 255, 255);
+    position:relative;
+    left: 50vw;
+    top:-10vh;
+}
+
+.saveMemo{
+    position:relative;
+
+}
+
+/* 出欠確認ページ------------------------------------------ */
+/*出席用*/
+.btn-attendance {
+	/*周りの凹み*/
+	display: inline-block;
+	position: relative;
+	text-decoration: none;
+	color: rgba(3, 228, 244, 0.54);
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	text-align: center;
+	background: #f7f7f7;
+	box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.08);
+  }
+  .btn-attendance i {
+	/*ボタン自体*/
+	position: absolute;
+	content: '';
+	width: 80px;
+	height: 80px;
+	line-height: 80px;
+	left: 10px;
+	top: 9px;
+	border-radius: 50%;
+	font-size: 40px;
+	background-image: linear-gradient(#e8e8e8 0%, #d6d6d6 100%);
+	text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+	box-shadow: inset 0 2px 0 rgba(255,255,255,0.5), 0 2px 2px rgba(0, 0, 0, 0.19);
+	border-bottom: solid 2px #b5b5b5;
+  }
+  .btn-attendance .fa:active {
+	box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 2px 2px rgba(0, 0, 0, 0.19);
+	border-bottom: solid 2px #d8d8d8;
+  }
+/*遅刻用*/
+  .btn-late {
+	/*周りの凹み*/
+	display: inline-block;
+	position: relative;
+	text-decoration: none;
+	color: rgb(244, 240, 3);
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	text-align: center;
+	background: #f7f7f7;
+	box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.08);
+  }
+  .btn-late i {
+	/*ボタン自体*/
+	position: absolute;
+	content: '';
+	width: 80px;
+	height: 80px;
+	line-height: 80px;
+	left: 10px;
+	top: 9px;
+	border-radius: 50%;
+	font-size: 40px;
+	background-image: linear-gradient(#e8e8e8 0%, #d6d6d6 100%);
+	text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+	box-shadow: inset 0 2px 0 rgba(255,255,255,0.5), 0 2px 2px rgba(0, 0, 0, 0.19);
+	border-bottom: solid 2px #b5b5b5;
+  }
+	
+  .btn-late .fa:active {
+	box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 2px 2px rgba(0, 0, 0, 0.19);
+	border-bottom: solid 2px #d8d8d8;
+  }
+/*欠席用*/
+  .btn-absence {
+	/*周りの凹み*/
+	display: inline-block;
+	position: relative;
+	text-decoration: none;
+	color: rgba(244, 31, 3, 0.959);
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	text-align: center;
+	background: #f7f7f7;
+	box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.08);
+  }
+  .btn-absence i {
+	/*ボタン自体*/
+	position: absolute;
+	content: '';
+	width: 80px;
+	height: 80px;
+	line-height: 80px;
+	left: 10px;
+	top: 9px;
+	border-radius: 50%;
+	font-size: 40px;
+	background-image: linear-gradient(#e8e8e8 0%, #d6d6d6 100%);
+	text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+	box-shadow: inset 0 2px 0 rgba(255,255,255,0.5), 0 2px 2px rgba(0, 0, 0, 0.19);
+	border-bottom: solid 2px #b5b5b5;
+  }
+	
+  .btn-absence .fa:active {
+	box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 2px 2px rgba(0, 0, 0, 0.19);
+	border-bottom: solid 2px #d8d8d8;
+  }
+
+
+  .checkAttendance{
+	display:  inline-block;     /* インラインブロック要素にする */
+	width: 0px;    
+	padding:  50px;             /* 余白指定 */
+  }
+  .checkAttendanceClear{
+	  background-color: red; 
+	  text-align:  center;        /* 中央寄せ */
+
+  }
+  
+  .attendanceDetails{
+	display:none;
+	position:absolute;
+	left:50vw;
+	top:50vh;
+	animation: details 5s cubic-bezier(.4,0,.2,1);
+	/* position:absolute;  */
+	background-color:rgb(255, 255, 255);
+	color:rgb(0, 0, 0);
+	font-weight:bold;
+	z-index:1;
+	   
+	/* anon */
+	border-radius: 10px;
+	border: solid 1px rgb(80, 105, 246);
+	line-height:2;
+	/*background-size:cover;*//*内容に合わせて大きさを変えてくれます*/
+	
+	/*スクロール可能にする 以下の5つが追加したもの*/
+	top:3.5vh;
+	bottom:3.5vh;
+	left:3.5vw;
+	right:10.5vw;
+	
+	overflow: auto;
+	
+	padding-right:3%;
+	padding-left: 3%;
+	padding-bottom:3%;
+		opacity:0;
+		animation: example 0.5s ease 0.4s 1 forwards;
+	}
+	@keyframes example {
+	100% {
+	opacity: 1;
+	}    }     
+
+	.lateDetails{
+		display:none;
+		position:absolute;
+		left:50vw;
+		top:50vh;
+		animation: details 5s cubic-bezier(.4,0,.2,1);
+		/* position:absolute;  */
+		background-color:rgb(255, 255, 255);
+		color:rgb(0, 0, 0);
+		font-weight:bold;
+		z-index:1;
+		   
+		/* anon */
+		border-radius: 10px;
+		border: solid 1px rgb(80, 105, 246);
+		line-height:2;
+		/*background-size:cover;*//*内容に合わせて大きさを変えてくれます*/
+		
+		/*スクロール可能にする 以下の5つが追加したもの*/
+		top:3.5vh;
+		bottom:3.5vh;
+		left:3.5vw;
+		right:10.5vw;
+		
+		overflow: auto;
+		
+		padding-right:3%;
+		padding-left: 3%;
+		padding-bottom:3%;
+			opacity:0;
+			animation: example 0.5s ease 0.4s 1 forwards;
+		}
+		@keyframes example {
+		100% {
+		opacity: 1;
+		}    }     
+
+		.absenceDetails{
+			display:none;
+			position:absolute;
+			left:50vw;
+			top:50vh;
+			animation: details 5s cubic-bezier(.4,0,.2,1);
+			/* position:absolute;  */
+			background-color:rgb(255, 255, 255);
+			color:rgb(0, 0, 0);
+			font-weight:bold;
+			z-index:1;
+			   
+			/* anon */
+			border-radius: 10px;
+			border: solid 1px rgb(80, 105, 246);
+			line-height:2;
+			/*background-size:cover;*//*内容に合わせて大きさを変えてくれます*/
+			
+			/*スクロール可能にする 以下の5つが追加したもの*/
+			top:3.5vh;
+			bottom:3.5vh;
+			left:3.5vw;
+			right:10.5vw;
+			
+			overflow: auto;
+			
+			padding-right:3%;
+			padding-left: 3%;
+			padding-bottom:3%;
+				opacity:0;
+				animation: example 0.5s ease 0.4s 1 forwards;
+			}
+			@keyframes example {
+			100% {
+			opacity: 1;
+			}    }     
+
+	/* 出欠確認ページ ここまで------------------------------------------ */
+
+	/*ホームページここから----------------------------------------------------------曽川ここから下すべて追加です*/
+	#doshishaHP {
+		display: block;
+		padding: 7px 0;
+		text-align: center;
+	}
+	/* マウスホバー時のカラー*/
+	
+	.button-arrow-inner-thin {
+	text-align: center;
+	box-sizing: border-box;
+	display: block;
+	background: #447fff;
+	border-bottom: 2px solid rgba(0,0,0,0.3);
+	color: #fff;
+	font-weight: bold;
+	padding: 0.8em;
+	line-height: 1.4;
+	max-width: 300px;
+	width: 100%;
+	margin: 10% auto;
+	position: relative;
+	}
+	.button-arrow-inner-thin::after, .button-arrow-inner-thin::before {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 50%;
+	right: 12px;
+	opacity: 0;
+	transition: opacity 0.3s, transform 0.3s;
+	}
+	.button-arrow-inner-thin::after {
+	width: 10px;
+	height: 10px;
+	margin-top: -5px;
+	transform: translate(-300px) rotate(45deg);
+	border-top: 1px solid #fff;
+	}
+	.button-arrow-inner-thin::before {
+	width: 40px;
+	height: 1px;
+	margin-right: -2px;
+	background: #fff;
+	transform: translate(-300px);
+	}
+	.button-arrow-inner-thin:hover::after, .button-arrow-inner-thin:hover::before {
+	opacity: 1;
+	}
+	.button-arrow-inner-thin:hover::after {
+	transform: translate(0) rotate(45deg);
+	}
+	.button-arrow-inner-thin:hover::before {
+	transform: translate(0);
+	}
+	.button-arrow-inner-thin:active, .button-arrow-inner-thin:focus {
+	opacity: 0.8;
+	border-bottom-color: transparent;
+	}
+	/*ホームページここまで----------------------------------------------------------*/
+	/*メモ機能追加ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー*/
+	#memoarea{
+		width:100%;
+		height:100%;
+	}
+	/*メモ機能追加ここまで-----------------------------------------------------------*/
+	/*色機能　　*/
+.color0{background-color:rgb(253, 211, 221);}
+.color1{background-color:rgb(248, 185, 201);}
+.color2{background-color:rgb(252, 147, 174);}
+.color3{background-color:rgb(255, 123, 123);}
+.color4{background-color:rgb(196, 238, 238);}
+.color5{background-color:rgb(143, 168, 236);}
+.color6{background-color:rgb(101, 91, 238);}
+.color7{background-color:rgb(152, 251, 152);}
+.color8{background-color:rgb(171, 248, 171);}
+.color9{background-color:rgb(242, 253, 193);}
+.color11{background-color:rgb(240, 230, 130);}
+.color12{background-color:rgb(250, 250, 160);}
+.color10{background-color:rgb(253, 200, 103);}
+.color13{background-color:rgb(246, 234, 255);}
+.color14{background-color:rgb(226, 214, 255);;}
+.color15{background-color:rgb(206, 194, 235);}
+
+.colorCell:hover{
+	background-color: rgb(182, 182, 182);
+}
+
+
+
+.lectureName{
+	resize: none;
+	overflow:hidden;
+	width:700px;
+	max-height:90px;
+	border:solid 0px;
+	font-size: 3.2em;          /* 文字サイズ */
+	color:rgb(255, 255, 255);
+}
+.RoomContent{
+
+	resize: none;
+	overflow:hidden;
+	width:700px;
+	max-height:30px;
+	border:solid 0px;
+	font-size: 2.5em;          /* 文字サイズ */
+	color:rgb(255, 255, 255);
+}
+
+header{
+	background-color:rgb(20, 4, 191);
+	color:rgb(255, 255, 255);
+}
+::placeholder {
+	color: rgb(255, 255, 255);
+  }
